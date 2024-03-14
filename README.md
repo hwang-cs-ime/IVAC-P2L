@@ -1,6 +1,6 @@
-# IVAC-P^2L
+# IVAC-P<sup>2</sup>L
 
-> **IVAC-P^2L: Leveraging Irregular Repetition Priors for Improving Video Action Counting** <br>
+> **IVAC-P<sup>2</sup>L: Leveraging Irregular Repetition Priors for Improving Video Action Counting** <br>
 
 ## Preparing Datasets
 We train on the training set of the RepCount-A dataset, and test on the testing set of the RepCount-A dataset, the validation sets of the UCFRep and Countix datasets.
