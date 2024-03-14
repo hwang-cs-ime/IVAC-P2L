@@ -1,4 +1,4 @@
-# VRAC-P2L
+# IVAC-P^2L
 
 ## Preparing Datasets
 We train on the training set of the RepCount-A dataset, and test on the testing set of the RepCount-A dataset, the validation sets of the UCFRep and Countix datasets.
