@@ -32,7 +32,7 @@ If you have any questions, please feel free to contact: cshwang@comp.polyu.edu.h
 <details>
 <summary>statistics</summary>
 
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=cshwang/IVAC-P2L)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=cshwang)
 
 </details>
 
