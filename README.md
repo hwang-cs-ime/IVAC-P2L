@@ -10,17 +10,16 @@ Download datasets: [RepCount-A](https://svip-lab.github.io/dataset/RepCount_data
 ## Train
 
 on the training set of the RepCount-A dataset
+```bash
+python train.py
+```
 
 ## Test
 
 on the testing set of the RepCount-A dataset
-
-
-on the validation set of the UCFRep dataset
-
-
-on the validation set of the Countix dataset
-
+```bash
+python test.py
+```
 
 ### Acknowledgement
 This project is built based on the excellent [TransRAC](https://github.com/SvipRepetitionCounting/TransRAC) project.
