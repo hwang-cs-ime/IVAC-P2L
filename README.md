@@ -23,7 +23,7 @@ on the validation set of the Countix dataset
 
 
 ### Acknowledgement
-This project is built based on the excellent [TransRAC] (https://github.com/SvipRepetitionCounting/TransRAC) project.
+This project is built based on the excellent [TransRAC](https://github.com/SvipRepetitionCounting/TransRAC) project.
 
 
 ### Contact
