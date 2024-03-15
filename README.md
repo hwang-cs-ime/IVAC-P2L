@@ -20,3 +20,7 @@ on the validation set of the UCFRep dataset
 
 
 on the validation set of the Countix dataset
+
+
+### Acknowledgement
+This project is built based on the excellent [TransRAC](https://github.com/SvipRepetitionCounting/TransRAC) project.
