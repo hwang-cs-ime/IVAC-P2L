@@ -140,7 +140,7 @@ class TransferModel(nn.Module):
         self.scales = scales
         self.OPEN = OPEN
 
-        self.backbone = self.load_model()  # load pretrain model
+        self.backbone = self.load_model()
 
         self.Replication_padding1 = nn.ConstantPad3d((0, 0, 0, 0, 1, 1), 0)
         self.Replication_padding2 = nn.ConstantPad3d((0, 0, 0, 0, 2, 2), 0)
@@ -164,12 +164,12 @@ class TransferModel(nn.Module):
         self.bn2 = nn.BatchNorm2d(32)
 
         self.dropout1 = nn.Dropout(0.25)
-        self.input_projection = nn.Linear(self.num_frames * 32, 512)  # 线性投射层
+        self.input_projection = nn.Linear(self.num_frames * 32, 512)
         self.ln1 = nn.LayerNorm(512)
 
         self.transEncoder = TransEncoder(d_model=512, n_head=4, dropout=0.2, dim_ff=512, num_layers=1, num_frames=self.num_frames)
 
-        self.FC = Prediction(512, 512, 256, 1)  #
+        self.FC = Prediction(512, 512, 256, 1)  
 
     def load_model(self):
         # load  pretrained model of video swin transformer using mmaction and mmcv API
