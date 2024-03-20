@@ -33,7 +33,7 @@ SCALES = [1, 4, 8]
 
 train_dataset = MyData(root_path, train_video_dir, train_label_dir, num_frame=NUM_FRAME, aug=True)
 test_dataset = MyData(root_path, test_video_dir, test_label_dir, num_frame=NUM_FRAME, aug=False)
-my_model = TransferModel(config=config, checkpoint=checkpoint, num_frames=NUM_FRAME, scales=SCALES, OPEN=False)
+my_model = IVAC_P2L(config=config, checkpoint=checkpoint, num_frames=NUM_FRAME, scales=SCALES, OPEN=False)
 NUM_EPOCHS = 200
 BATCH_SIZE = 64
 LR = 8e-5
