@@ -33,14 +33,12 @@ class MyData(Dataset):
         time_points = self.label_dict[video_file_name]
         file_path = os.path.join(self.root_path, self.video_path, video_file_name)
         video_rd = VideoRead(file_path, time_points, num_frames=self.num_frame)
-        # video_frame_length = video_rd.frame_length
 
         video_tensor, label, index_pos, index_neg = video_rd.Normalize_frame_label(annotation=time_points, Num_Frames_Norm=self.num_frame, aug=self.aug)
 
         return [video_tensor, label, index_pos, index_neg]
 
     def __len__(self):
-        """返回数据集的大小"""
         return len(self.video_dir)
 
 class VideoRead:
@@ -65,40 +63,12 @@ class VideoRead:
         return frames
 
     def Normalize_frame_label(self, annotation=[], Num_Frames_Norm=64, aug=False):
-        """
-        1. crop 到64帧
-        2. 尺寸crop 到[224, 224]
-        3. label也进行相应的crop
-        4. 数据增强：（1）count_gt > 15的，随机取其中一部分作为增强后的，起始时间是不确定的，持续时间也是不确定的
-                    (2) 随机crop到[224, 224], 水平翻转，垂直翻转
-        to crop frames to tensor
-        return: tensor [64, 3, 224, 224]
-        """
+
         frames = self.get_frame()
 
         count_gt = int(len(self.time_points) / 2)
         if aug==True and random.random() > 0.5:
             if count_gt > 15:
-                # 对视频在时序上做了增强
-                # start = random.randint(0, int(self.frame_length/2))
-                # # end = random.randint(int(self.frame_length/2)+1, self.frame_length-1)
-                # end = random.randint(start+int(self.frame_length/4), self.frame_length - 1)
-                # frames_new = frames[start:end+1]
-
-                # # 相应地对label也进行crop
-                # annotation_new = []
-                # for index_label in range(len(annotation)):
-                #     if start <= annotation[index_label] <= end:
-                #         annotation_new.append(annotation[index_label])
-                #
-                # if len(annotation_new) % 2 != 0:
-                #     del annotation_new[-1]
-                #     if annotation_new[-1]+1 > len(frames):
-                #         print(1)
-                #     frames_new = frames[start:annotation_new[-1]+1]
-                #
-                # annotation_new = [annotation_new[i]-start for i in range(len(annotation_new))]
-
                 index_start = random.randrange(0, int(len(annotation)/2), 2)
                 start = annotation[index_start]
                 if int(len(annotation)/2)%2==0:
@@ -109,13 +79,9 @@ class VideoRead:
                 annotation_new = annotation[index_start:index_end+1]
                 annotation_new = [anno-start for anno in annotation_new]
 
-                # if len(annotation_new) % 2 != 0:
-                #     print(1)
-
                 frames_new = frames[start:end+1]
                 frames = frames_new
                 annotation = annotation_new
-                # 更新self.frame_length
                 self.frame_length = len(frames)
 
         frames_tensor = []
@@ -142,9 +108,6 @@ class VideoRead:
             Frame_Tensor = transforms.RandomVerticalFlip()(Frame_Tensor)
             Frame_Tensor = transforms.RandomHorizontalFlip()(Frame_Tensor)
 
-        # Frame_Tensor -= 127.5
-        # Frame_Tensor /= 127.5
-
         Frame_Tensor = transforms.Normalize(mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375))(Frame_Tensor)
 
         label_new = []
@@ -170,7 +133,6 @@ class VideoRead:
                 if num > 0:
                     index_neg.append(x_a)
                     index_neg.append(x_b)
-        # assert len(index_neg) <= self.num_frames, "len(index_neg) > num_frames"
         index_neg.extend([-1 for i in range(self.num_frames * 5 - len(index_neg))])
 
         label = torch.tensor(label)
