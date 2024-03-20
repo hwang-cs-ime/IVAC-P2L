@@ -39,7 +39,7 @@ NUM_FRAME = 64
 SCALES = [1, 4, 8]
 NUM_EPOCHS = 1
 test_dataset = MyData(root_path, test_video_dir, test_label_dir, num_frame=NUM_FRAME)
-my_model = TransferModel(config=config, checkpoint=checkpoint, num_frames=NUM_FRAME, scales=SCALES, OPEN=False)
+my_model = IVAC_P2L(config=config, checkpoint=checkpoint, num_frames=NUM_FRAME, scales=SCALES, OPEN=False)
 
 lastckpt_path = '/data0/wanghang/VRAC_2/VRAC_P2L_22/checkpoint/VRAC_P2L_22/'
 pt_file = os.listdir(lastckpt_path)
@@ -58,11 +58,3 @@ for i in range(len(pt_file)):
         logging.info(print_info)
 
 print(results_test)
-
-
-# lastckpt = '/data0/wanghang/VRAC_2/TransRAC/checkpoint/TransRAC_2/38_0.4734.pt'
-# lastckpt = '/data0/wanghang/VRAC_2/TransRAC_latest_npz/checkpoint/transrac_ckpt_pytorch_171.pt'
-# MAE, OBO = test_loop(NUM_EPOCHS, my_model, test_dataset, lastckpt=lastckpt)
-# print_info = "pt_file: transrac_ckpt_pytorch_171.pt, testMAE={}, testOBO={}".format('%.4f' % MAE, '%.4f' % OBO)
-# print(print_info)
-# logging.info(print_info)
