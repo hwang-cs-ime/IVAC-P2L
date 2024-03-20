@@ -6,7 +6,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 from dataset.RepCountA_raw_Loader import MyData
 
 # you can use 'tools.video2npz.py' to transform .mp4 to .npz
-from models.TransRAC import TransferModel
+from models.IVAC import IVAC_P2L
 from training.train_looping import train_loop
 
 # CUDA environment
