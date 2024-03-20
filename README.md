@@ -1,9 +1,9 @@
 # IVAC-P<sup>2</sup>L
 
 > **IVAC-P<sup>2</sup>L: Leveraging Irregular Repetition Priors for Improving Video Action Counting** <br>
-> [Hang Wang]<sup>1,2</sup> | 
+> Hang Wang<sup>1,2</sup> | 
 [Zhi-Qi Cheng](https://github.com/zhiqicheng)<sup>3</sup> |
-[Youtian Du]<sup>1</sup> |
+Youtian Du<sup>1</sup> |
 [Lei Zhang](https://www4.comp.polyu.edu.hk/~cslzhang/)<sup>2</sup> <br>
 <sup>1</sup>Xi'an Jiaotong University, <sup>2</sup>The Hong Kong Polytechnic University, <sup>3</sup>Carnegie Mellon University <br>
 
@@ -11,7 +11,7 @@
 ## Preparing Datasets
 We train on the training set of the RepCount-A dataset, and test on the testing set of the RepCount-A dataset, the validation sets of the UCFRep and Countix datasets.
 
-Download datasets: [RepCount-A](https://svip-lab.github.io/dataset/RepCount_dataset.html), [UCFRep](https://www.crcv.ucf.edu/data/UCF101.php), [Countix]
+Download datasets: [RepCount-A](https://svip-lab.github.io/dataset/RepCount_dataset.html), [UCFRep](https://www.crcv.ucf.edu/data/UCF101.php), Countix
 
 ## Train
 
