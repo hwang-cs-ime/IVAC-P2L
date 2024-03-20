@@ -11,7 +11,7 @@ import logging
 # from dataset.RepCountA_raw_Loader import MyData
 # if your data is .npz form, please use RepCountA_Loader.py. It can speed up the training
 from dataset.RepCountA_Loader import MyData
-from models.TransRAC import TransferModel
+from models.IVAC import IVAC_P2L
 from testing.test_looping import test_loop
 
 N_GPU = 1
