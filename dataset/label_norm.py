@@ -20,13 +20,13 @@ def normalize_label(y_frame, y_length):
     # y_length: total frames
     # return: normalize_label  size:nparray(y_length,)
     index_pos = []
-    y_label = [0 for i in range(y_length)]  # 坐标轴长度，即帧数
+    y_label = [0 for i in range(y_length)]
     for i in range(0, len(y_frame), 2):
         x_a = y_frame[i]
         x_b = y_frame[i + 1]
         avg = (x_b + x_a) / 2
         sig = (x_b - x_a) / 6
-        num = x_b - x_a + 1  # 帧数量 update 1104
+        num = x_b - x_a + 1 
         if num != 1:
             for j in range(num):
                 x_1 = x_a - 0.5 + j
