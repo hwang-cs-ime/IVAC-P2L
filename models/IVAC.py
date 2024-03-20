@@ -131,9 +131,9 @@ class Prediction(nn.Module):
         return x
 
 
-class TransferModel(nn.Module):
+class IVAC_P2L(nn.Module):
     def __init__(self, config, checkpoint, num_frames, scales, OPEN=False):
-        super(TransferModel, self).__init__()
+        super(IVAC_P2L, self).__init__()
         self.num_frames = num_frames
         self.config = config
         self.checkpoint = checkpoint
