@@ -27,7 +27,7 @@ on the testing set of the RepCount-A dataset
 python test.py
 ```
 
-Pre-trained Checkpoint on RepCount-A**
+## Pre-trained Checkpoint on RepCount-A
 
 We also provide a pre-trained model for RepCount-A, which can be downloaded from [this Google Drive link](https://drive.google.com/file/d/1gFUhs-Kjacpy6wMxvIi0B4VnVlAlxnhP/view?usp=sharing).
 
