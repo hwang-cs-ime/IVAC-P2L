@@ -41,20 +41,19 @@ NUM_EPOCHS = 1
 test_dataset = MyData(root_path, test_video_dir, test_label_dir, num_frame=NUM_FRAME)
 my_model = IVAC_P2L(config=config, checkpoint=checkpoint, num_frames=NUM_FRAME, scales=SCALES, OPEN=False)
 
-lastckpt_path = '/data0/wanghang/VRAC_2/VRAC_P2L_22/checkpoint/VRAC_P2L_22/'
+lastckpt_path = './checkpoints'
 pt_file = os.listdir(lastckpt_path)
 pt_file.sort()
 
 results_test = []
 for i in range(len(pt_file)):
-    if int(pt_file[i].split('_')[0]) > 68:
-        lastckpt = lastckpt_path + pt_file[i]
-        MAE, OBO = test_loop(NUM_EPOCHS, my_model, test_dataset, lastckpt=lastckpt)
-        results_test.append({'pt_file': pt_file[i],
-                             'testMAE': '%.4f' % MAE,
-                             'testOBO': '%.4f' % OBO})
-        print_info = "pt_file:{}, testMAE={}, testOBO={}".format(pt_file[i], '%.4f' % MAE, '%.4f' % OBO)
-        print(print_info)
-        logging.info(print_info)
+    lastckpt = lastckpt_path + pt_file[i]
+    MAE, OBO = test_loop(NUM_EPOCHS, my_model, test_dataset, lastckpt=lastckpt)
+    results_test.append({'pt_file': pt_file[i],
+                         'testMAE': '%.4f' % MAE,
+                         'testOBO': '%.4f' % OBO})
+    print_info = "pt_file:{}, testMAE={}, testOBO={}".format(pt_file[i], '%.4f' % MAE, '%.4f' % OBO)
+    print(print_info)
+    logging.info(print_info)
 
 print(results_test)
