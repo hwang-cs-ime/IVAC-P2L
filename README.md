@@ -1,6 +1,7 @@
 # IVAC-P<sup>2</sup>L
 
-> **IVAC-P<sup>2</sup>L: Leveraging Irregular Repetition Priors for Improving Video Action Counting(https://liangjie.xyz/LjHomepageFiles/paper_files/LDL_CVPR2022_paper.pdf)** <br>
+> **IVAC-P<sup>2</sup>L: Leveraging Irregular Repetition Priors for Improving Video Action Counting** <br>
+### [Paper](https://arxiv.org/pdf/2403.11959.pdf)
 > Hang Wang<sup>1,2</sup> | 
 [Zhi-Qi Cheng](https://github.com/zhiqicheng)<sup>3</sup> |
 Youtian Du<sup>1</sup> |
