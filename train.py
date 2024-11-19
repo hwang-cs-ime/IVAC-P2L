@@ -13,7 +13,7 @@ from training.train_looping import train_loop
 N_GPU = 1
 device_ids = [i for i in range(N_GPU)]
 
-root_path = '/data0/wanghang/VRAC_2/dataset_REPCountA_resume/'
+root_path = '../VRAC_2/dataset_REPCountA_resume/'
 
 train_video_dir = 'video/train'
 train_label_dir = 'annotation/train.csv'
@@ -21,7 +21,7 @@ test_video_dir = 'video/test'
 test_label_dir = 'annotation/test.csv'
 
 # please make sure the pretrained model path is correct
-checkpoint = '/data0/wanghang/VRAC_2/RAC_136_AE_20_1_V100/pretrained/swin_tiny_patch244_window877_kinetics400_1k.pth'
+checkpoint = '../VRAC_2/RAC_136_AE_20_1_V100/pretrained/swin_tiny_patch244_window877_kinetics400_1k.pth'
 config = './configs/recognition/swin/swin_tiny_patch244_window877_kinetics400_1k.py'
 
 # TransRAC trained model checkpoint, we will upload soon.

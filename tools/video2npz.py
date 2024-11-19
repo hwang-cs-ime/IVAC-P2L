@@ -166,14 +166,14 @@ class MyDataset(Dataset):
 
 
 if __name__ == '__main__':
-    data_root = r'/data0/wanghang/VRAC_2/dataset_REPCountA_resume'
+    data_root = r'../VRAC_2/dataset_REPCountA_resume'
     tag = ['train', 'valid', 'test']
     for split in range(len(tag)):
         # num_video_Norm = 128
         # npz_dir = r'/data0/wanghang/VRAC_2/dataset_REPCountA_resume/video_npz_128/'
 
         num_video_Norm = 32
-        npz_dir = r'/data0/wanghang/VRAC_2/dataset_REPCountA_resume/video_npz_32/'
+        npz_dir = r'../VRAC_2/dataset_REPCountA_resume/video_npz_32/'
 
         mod = tag[split]
         label_file = 'annotation/' + mod + '.csv'

@@ -35,7 +35,7 @@ class associative_loss(nn.Module):
                     print("feat_extract.shape[0]={}".format(feat_extract.shape[0]))
                     assert feat_extract.shape[0] >= 1, "feat_extract.shape[0] < 1"
 
-            if len(cycle_feat)==0:
+            if len(cycle_feat) == 0:
                 print(1)
 
             cycle_feat = torch.stack(cycle_feat, dim=0).squeeze(1)
@@ -81,4 +81,3 @@ class associative_loss(nn.Module):
         loss_total = torch.stack(loss_total).mean()
 
         return loss_total
-

@@ -11,18 +11,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from tools.associative_loss import associative_loss
 import logging
-import torch.backends.cudnn as cudnn
-import random
 
-
-# seed = 13
-# cudnn.benchmark = False
-# # cudnn.benchmark = True
-# cudnn.deterministic = True
-# random.seed(seed)
-# np.random.seed(seed)
-# torch.manual_seed(seed)
-# torch.cuda.manual_seed_all(seed)
 
 
 torch.manual_seed(1)
@@ -36,10 +25,10 @@ def train_loop(n_epochs,
                inference=True,
                batch_size=64,
                lr=8e-5,
-               ckpt_name='VRAC_P2L_26_seed4_8_1_2_3_aug3_resume',
+               ckpt_name='',
                lastckpt=None,
                saveckpt=False,
-               log_dir='VRAC_P2L_26_seed4_8_1_2_3_aug3_resume',
+               log_dir='',
                device_ids=[0],
                mae_error=False):
     
@@ -55,10 +44,6 @@ def train_loop(n_epochs,
     testloader = DataLoader(test_set, batch_size=batch_size, pin_memory=False, shuffle=True, num_workers=1)
 
     model = nn.DataParallel(model.to(device), device_ids=device_ids)
-    
-    # optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
-    # milestones = [30, 80]
-    # scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=milestones, gamma=0.1)  # three step decay
 
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
     milestones = [i for i in range(0, n_epochs, 40)]
@@ -71,12 +56,6 @@ def train_loop(n_epochs,
         print("loading checkpoint")
         checkpoint = torch.load(lastckpt)
         currEpoch = checkpoint['epoch'] + 1
-        # load hyperparameters by pytorch
-        # if change model
-        # net_dict=model.state_dict()
-        # state_dict={k: v for k, v in checkpoint.items() if k in net_dict.keys()}
-        # net_dict.update(state_dict)
-        # model.load_state_dict(net_dict, strict=False)
 
         # or don't change model
         model.load_state_dict(checkpoint['state_dict'], strict=False)
@@ -89,7 +68,6 @@ def train_loop(n_epochs,
                 state[k] = v.to(device)
 
     lossMSE = nn.MSELoss()
-    lossSL1 = nn.SmoothL1Loss()
     AE_loss = associative_loss()
 
     for epoch in tqdm(range(currEpoch, n_epochs + currEpoch)):
@@ -113,7 +91,6 @@ def train_loop(n_epochs,
                     predict_count = torch.sum(output, dim=1).type(torch.FloatTensor).to(device)
                     predict_density = output
                     loss1 = lossMSE(predict_density, density)
-                    # loss2 = lossSL1(predict_count, count)
                     loss2 = lossMSE(predict_count, count)
                     loss3 = torch.sum(torch.div(torch.abs(predict_count - count), count + 1e-1)) / predict_count.flatten().shape[0]  # mae
                     loss4 = AE_loss(feat_x, index_pos, index_neg)
@@ -176,7 +153,6 @@ def train_loop(n_epochs,
                     predict_density_test = output_test
 
                     loss1_test = lossMSE(predict_density_test, density_test)
-                    # loss2_test = lossSL1(predict_count_test, count_test)
                     loss2_test = lossMSE(predict_count_test, count_test)
                     loss3_test = torch.sum(torch.div(torch.abs(predict_count_test - count_test), count_test + 1e-1)) / predict_count_test.flatten().shape[0]  # mae
                     loss4_test = AE_loss(feat_x_test, index_pos_test, index_neg_test)
