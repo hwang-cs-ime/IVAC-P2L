@@ -36,11 +36,14 @@ Thanks for works of [TransRAC](https://github.com/SvipRepetitionCounting/TransRA
 
 ### Citation 
 ```
-@article{wang2024ivac,
-  title={IVAC-P2L: Enhancing Video Action Counting through Irregular Repetition Priors},
-  author={Wang, Hang and Cheng, Zhi-Qi and Du, Youtian and Zhang, Lei},
-  journal={arXiv preprint arXiv:2403.11959},
-  year={2024}
+@misc{wang2024ivacp2lleveragingirregularrepetition,
+      title={IVAC-P2L: Leveraging Irregular Repetition Priors for Improving Video Action Counting}, 
+      author={Hang Wang and Zhi-Qi Cheng and Youtian Du and Lei Zhang},
+      year={2024},
+      eprint={2403.11959},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2403.11959}, 
 }
 ```
 
