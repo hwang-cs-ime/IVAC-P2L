@@ -1,4 +1,4 @@
-### [IVAC-P<sup>2</sup>L: Leveraging Irregular Repetition Priors for Improving Video Action Counting](https://arxiv.org/pdf/2403.11959.pdf), (TMM 2025)
+### [IVAC-P<sup>2</sup>L: Leveraging Irregular Repetition Priors for Improving Video Action Counting](https://ieeexplore.ieee.org/document/11146674), (TMM 2025)
 > Hang Wang<sup>1,2</sup> | 
 [Zhi-Qi Cheng](https://github.com/zhiqicheng)<sup>3</sup> |
 Youtian Du<sup>1</sup> |
@@ -36,14 +36,16 @@ Thanks for works of [TransRAC](https://github.com/SvipRepetitionCounting/TransRA
 
 ### Citation 
 ```
-@misc{wang2024ivacp2lleveragingirregularrepetition,
-      title={IVAC-P2L: Leveraging Irregular Repetition Priors for Improving Video Action Counting}, 
-      author={Hang Wang and Zhi-Qi Cheng and Youtian Du and Lei Zhang},
-      year={2024},
-      eprint={2403.11959},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2403.11959}, 
+@ARTICLE{11146674,
+  author={Wang, Hang and Cheng, Zhi-Qi and Du, Youtian and Zhang, Lei},
+  journal={IEEE Transactions on Multimedia}, 
+  title={IVAC-$\mathrm {P^{2}~L}$: Leveraging Irregular Repetition Priors for Improving Video Action Counting}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-15},
+  keywords={Videos;Spatiotemporal phenomena;Visualization;Semantics;Feature extraction;Data mining;Contrastive learning;Training;Complexity theory;Artificial intelligence;Video action counting;irregular repetition priors;inter-cycle consistency;cycle-interval inconsistency},
+  doi={10.1109/TMM.2025.3604935}
 }
 ```
 
